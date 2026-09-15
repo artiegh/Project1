@@ -1,0 +1,454 @@
+:root {
+  --navy: #000000;         
+  --blue: #000000be;         
+  --blue-light: #d3d3d341;   
+  --ink: #000000cb;         
+  --muted: #000000cb;        
+  --line: #00000071;        
+  --paper: #FFFFFF;        
+
+  --font-head: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --maxw: 1040px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: var(--font-head); margin: 0; color: var(--navy); }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* =========================================================
+   ปุ่ม
+========================================================= */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.btn--primary { background: var(--navy); color: #fff; box-shadow: 0 8px 20px -8px rgba(15, 42, 74, 0.55); }
+.btn--primary:hover { background: var(--blue); transform: translateY(-2px); }
+.btn--ghost { border-color: var(--navy); color: var(--navy); background: #fff; }
+.btn--ghost:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+/* =========================================================
+   แถบเมนู (Nav)
+========================================================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__logo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--navy);
+}
+.nav__links {
+  display: flex;
+  gap: 2rem;
+}
+.nav__links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.nav__links a:hover { color: var(--blue); }
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav__toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--navy);
+  display: block;
+}
+
+/* =========================================================
+   Hero
+   ใช้วงกลมสีน้ำเงินเบลอๆ วางไว้ด้านหลัง ทำให้ดูมีมิติ
+   โดยไม่ต้องใช้ไฟล์รูปภาพเลย
+========================================================= */
+.hero {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+  opacity: 0;
+  animation: rise 0.7s ease forwards;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* วงกลมสีไล่เฉดลอยเบาๆ ด้านหลัง เพิ่มลูกเล่นให้หน้าเว็บ */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -1;
+  animation: float 9s ease-in-out infinite;
+}
+.hero::before {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #000000, #000000, #999999, var(--blue));
+  top: -100px;
+  left: -100px;
+}
+.hero::after {
+  width: 260px;
+  height: 260px;
+  background: linear-gradient(135deg, #000000, #000000, #999999);
+  bottom: -90px;
+  right: -60px;
+  animation-delay: -4s;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -16px) scale(1.08); }
+}
+
+.hero__text { text-align: left; }
+
+.hero__eyebrow {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+.hero__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.15;
+  font-weight: 600;
+}
+.hero__name {
+  background: linear-gradient(90deg, var(--blue), #222222, #777777, #222222 60%, var(--blue));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+.hero__desc {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin: 1.4rem 0 2rem;
+}
+.hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ===== รูปใหญ่ของ Hero =====
+   ใส่รูปของคุณเอง (เช่น รูปอนิเมะที่ชอบ) ได้ 2 ขั้นตอน:
+   1) วางไฟล์รูปไว้ในโฟลเดอร์เดียวกับ index.html
+   2) แก้ src="your-photo.jpg" ในไฟล์ index.html ให้เป็นชื่อไฟล์รูปของคุณ
+   ก่อนใส่รูป ตรงนี้จะโชว์กรอบพร้อมข้อความบอกไว้ให้อัตโนมัติ */
+.hero__photo {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blue-light), #DCE9FF);
+  border: 3px solid #fff;
+  box-shadow: 0 20px 40px -18px rgb(0, 0, 0);
+}
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero__photo-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1.6;
+}
+.hero__photo--empty .hero__photo-placeholder { display: flex; }
+
+/* =========================================================
+   Section พื้นฐาน
+========================================================= */
+.section { padding: 4.5rem 1.5rem; position: relative; }
+.section--tint {
+  background: var(--blue-light);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.section__inner { max-width: var(--maxw); margin: 0 auto; position: relative; }
+.section__inner--narrow { max-width: 620px; }
+.section__title { font-size: 1.8rem; margin-bottom: 0.6rem; }
+.section__subtitle { color: var(--muted); margin-bottom: 2.4rem; max-width: 60ch; }
+
+/* About */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about__text { font-size: 1.05rem; color: var(--ink); }
+.about__facts {
+  background: var(--blue-light);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.4rem 1.2rem;
+}
+.about__facts li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.about__facts li:last-child { border-bottom: none; }
+.about__facts span {
+  font-size: 0.8rem;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+.project-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--blue);
+  border-radius: 30px;
+  padding: 1.6rem;
+  box-shadow: 0 10px 24px -18px rgba(15, 42, 74, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px -14px rgba(15, 42, 74, 0.35);
+}
+.project-card__tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue);
+  background: var(--blue-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.9rem;
+}
+.project-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+.project-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 1rem;
+}
+.project-card__link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid var(--navy);
+}
+
+/* Skills: วงกลมเล็กๆ ใส่โลโก้จริงไว้ข้างใน */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.skill-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 22px -14px rgba(15, 42, 74, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.skill-card:hover .skill-circle {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 26px -12px rgba(15, 42, 74, 0.4);
+}
+.skill-circle img { width: 34px; height: 34px; }
+
+/* ไอคอนช่องทางติดต่อ */
+.contact-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  transition: transform 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.contact-icon svg { width: 20px; height: 20px; }
+.contact-icon:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 14px 30px -20px rgba(15, 42, 74, 0.4);
+}
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field label { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+.field input, .field textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  resize: vertical;
+}
+.field input:focus, .field textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+.contact-form .btn { align-self: flex-start; }
+.contact-form__status {
+  font-size: 0.9rem;
+  color: var(--blue);
+  min-height: 1.2em;
+}
+
+/* =========================================================
+   Responsive: จอมือถือ
+========================================================= */
+@media (max-width: 720px) {
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    display: none;
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__toggle { display: flex; }
+
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero__text { text-align: center; }
+  .hero__actions { justify-content: center; }
+  .hero__photo { order: -1; max-width: 240px; }
+
+  .about__grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   ลูกเล่น: ค่อยๆ เลื่อนขึ้นทีละ section ตอนสกอลล์ลงมาเจอ
+   (JavaScript แค่เพิ่ม class "is-visible" ให้ ตอนเลื่อนมาเห็น)
+========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* เคารพผู้ใช้ที่ปิดการเคลื่อนไหว */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero { animation: none; opacity: 1; }
+  .hero::before, .hero::after { animation: none; }
+  .hero__name { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+}
