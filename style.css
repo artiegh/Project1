@@ -31,9 +31,6 @@ a { color: inherit; text-decoration: none; }
 
 ul { list-style: none; margin: 0; padding: 0; }
 
-/* =========================================================
-   ปุ่ม
-========================================================= */
 .btn {
   display: inline-block;
   padding: 0.85rem 1.6rem;
@@ -49,9 +46,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .btn--ghost { border-color: var(--navy); color: var(--navy); background: #fff; }
 .btn--ghost:hover { background: var(--blue-light); transform: translateY(-2px); }
 
-/* =========================================================
-   แถบเมนู (Nav)
-========================================================= */
 .nav {
   position: sticky;
   top: 0;
@@ -101,11 +95,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   display: block;
 }
 
-/* =========================================================
-   Hero
-   ใช้วงกลมสีน้ำเงินเบลอๆ วางไว้ด้านหลัง ทำให้ดูมีมิติ
-   โดยไม่ต้องใช้ไฟล์รูปภาพเลย
-========================================================= */
 .hero {
   position: relative;
   max-width: var(--maxw);
@@ -187,11 +176,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* ===== รูปใหญ่ของ Hero =====
-   ใส่รูปของคุณเอง (เช่น รูปอนิเมะที่ชอบ) ได้ 2 ขั้นตอน:
-   1) วางไฟล์รูปไว้ในโฟลเดอร์เดียวกับ index.html
-   2) แก้ src="your-photo.jpg" ในไฟล์ index.html ให้เป็นชื่อไฟล์รูปของคุณ
-   ก่อนใส่รูป ตรงนี้จะโชว์กรอบพร้อมข้อความบอกไว้ให้อัตโนมัติ */
 .hero__photo {
   position: relative;
   width: 100%;
@@ -225,9 +209,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .hero__photo--empty .hero__photo-placeholder { display: flex; }
 
-/* =========================================================
-   Section พื้นฐาน
-========================================================= */
 .section { padding: 4.5rem 1.5rem; position: relative; }
 .section--tint {
   background: var(--blue-light);
@@ -239,7 +220,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .section__title { font-size: 1.8rem; margin-bottom: 0.6rem; }
 .section__subtitle { color: var(--muted); margin-bottom: 2.4rem; max-width: 60ch; }
 
-/* About */
 .about__grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -266,8 +246,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   color: var(--blue);
   font-weight: 600;
 }
-
-/* Projects */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -312,7 +290,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-bottom: 1px solid var(--navy);
 }
 
-/* Skills: วงกลมเล็กๆ ใส่โลโก้จริงไว้ข้างใน */
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -353,9 +330,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin-bottom: 1.8rem;
 }
 .contact-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -371,7 +348,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   transform: translateY(-3px);
 }
 
-/* Contact form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -404,9 +380,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   min-height: 1.2em;
 }
 
-/* =========================================================
-   Responsive: จอมือถือ
-========================================================= */
 @media (max-width: 720px) {
   .nav__links {
     position: absolute;
@@ -430,10 +403,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .about__grid { grid-template-columns: 1fr; }
 }
 
-/* =========================================================
-   ลูกเล่น: ค่อยๆ เลื่อนขึ้นทีละ section ตอนสกอลล์ลงมาเจอ
-   (JavaScript แค่เพิ่ม class "is-visible" ให้ ตอนเลื่อนมาเห็น)
-========================================================= */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -443,8 +412,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   opacity: 1;
   transform: translateY(0);
 }
-
-/* เคารพผู้ใช้ที่ปิดการเคลื่อนไหว */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero { animation: none; opacity: 1; }

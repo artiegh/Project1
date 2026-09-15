@@ -4,39 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artie kiku</title>
-
-  <!-- ฟอนต์จาก Google Fonts: Space Grotesk ใช้กับหัวข้อ, Inter ใช้กับเนื้อหา -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- ===== แถบเมนูด้านบน ===== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a href="#top" class="nav__logo">PORTFOLIO</a>
-
       <nav class="nav__links" id="navLinks">
         <a href="#about">เกี่ยวกับฉัน</a>
         <a href="#projects">ผลงาน</a>
         <a href="#skills">ทักษะ</a>
         <a href="#contact">ติดต่อ</a>
       </nav>
-
-      <!-- ปุ่มแฮมเบอร์เกอร์ สำหรับจอมือถือ -->
       <button class="nav__toggle" id="navToggle" aria-label="เปิดเมนู">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
-
-  <!-- ===== ส่วนหัว (Hero) =====
-       อยากใส่รูปใหญ่ของตัวเอง (เช่น รูปอนิเมะที่ชอบ)?
-       1) วางไฟล์รูปไว้โฟลเดอร์เดียวกับ index.html
-       2) แก้ src="your-photo.jpg" ด้านล่างให้เป็นชื่อไฟล์รูปของคุณ
-       ก่อนใส่รูปจริง ตรงนี้จะโชว์กรอบเปล่าพร้อมคำแนะนำให้อัตโนมัติ ==== -->
   <section class="hero" id="top">
     <div class="hero__text">
       <p class="hero__name">PROJECT</p>
@@ -52,18 +38,15 @@
         <a href="#contact" class="btn btn--ghost">ติดต่อฉัน</a>
       </div>
     </div>
-
     <div class="hero__photo" id="heroPhoto">
       <img
         src="https://i.pinimg.com/564x/18/a7/16/18a7167e35ea0b4d34c4d525d7ee8524.jpg"
         alt="รูปของฉัน"
         onerror="this.style.display='none'; document.getElementById('heroPhoto').classList.add('hero__photo--empty')"
       />
-      <span class="hero__photo-placeholder">ใส่รูปของคุณตรงนี้<br />(รูปอนิเมะ หรือรูปที่ชอบก็ได้)</span>
+      <span class="hero__photo-placeholder"><br /></span>
     </div>
   </section>
-
-  <!-- ===== เกี่ยวกับฉัน ===== -->
   <section class="section reveal" id="about">
     <div class="section__inner">
       <h2 class="hero__name">เกี่ยวกับฉัน</h2>
@@ -79,10 +62,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ===== ผลงาน / โปรเจกต์ =====
-       แก้ไขข้อความในการ์ดแต่ละใบตรงนี้ได้เลย
-       จะเพิ่มการ์ดใหม่ก็แค่ copy ทั้งบล็อก <article> ไปวางต่อ ==== -->
   <section class="section section--tint reveal" id="projects">
     <div class="section__inner">
       <h2 class="hero__name">Activities</h2>
@@ -95,7 +74,6 @@
           <p>ได้ไปทำ workshop roblox journey ได้ลองฝึกการเขียนโปรแกรม Lua</p>
           <a class="project-card__link" href="IMG_1216.jpg">ดูรายละเอียด →</a>
         </article>
-
         <article class="project-card">
           <span class="project-card__tag">Second</span>
           <h3>AI Mode is On - Web Speedrun</h3>
@@ -112,15 +90,10 @@
       </div>
     </div>
   </section>
-
-  <!-- ===== ทักษะ =====
-       ไอคอนโหลดจาก Devicon (คลังไอคอนโปรแกรมมิ่งฟรี) ผ่านลิงก์ตรงๆ ไม่ต้องดาวน์โหลดไฟล์เอง
-       อยากเพิ่มทักษะอื่น ก็ copy ทั้งบล็อก <div class="skill-card"> ไปวางต่อ แล้วเปลี่ยนลิงก์รูป+ชื่อ ==== -->
   <section class="section reveal" id="skills">
     <div class="section__inner">
       <h2 class="section__title">ทักษะ</h2>
       <p class="section__subtitle">เครื่องมือที่ใช้ทำ Web portfolio</p>
-
       <div class="skills">
         <div class="skill-card">
           <span class="skill-circle">
@@ -143,24 +116,18 @@
       </div>
     </div>
   </section>
-
-  <!-- ===== ติดต่อ ===== -->
   <section class="section section--tint reveal" id="contact">
     <div class="section__inner section__inner--narrow">
       <h2 class="section__title">ติดต่อฉัน</h2>
-      <p class="section__subtitle">สนใจผลงานหรืออยากพูดคุยเพิ่มเติม ส่งข้อความมาได้เลย หรือกดติดตามช่องทางด้านล่าง</p>
-
-      <!-- ช่องทางติดต่อ: แก้ href ให้เป็นลิงก์จริงของคุณ -->
+      <p class="section__subtitle">สนใจผลงานหรืออยากพูดคุยเพิ่มเติม ส่งข้อความมาได้เลย</p>
       <div class="contact-links">
         <a class="contact-icon" href="https://github.com/artiegh" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
         </a>
         <a class="contact-icon" href="https://instagram.com/userartiekiku" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
           <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />
-
         </a>
       </div>
-
       <form class="contact-form" id="contactForm">
         <div class="field">
           <label for="name">ชื่อ</label>
@@ -168,7 +135,7 @@
         </div>
         <div class="field">
           <label for="email">อีเมล</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          <input type="email" id="email" name="email" placeholder="you@gmail.com" required />
         </div>
         <div class="field">
           <label for="message">ข้อความ</label>
@@ -179,7 +146,6 @@
       </form>
     </div>
   </section>
-
   <script src="script.js"></script>
 </body>
 </html>
